@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 7.5% 7.5% 85%;
   height: 100vh;
-  background-color:  #0B5351;
+  background-color:  #092327;
   color:white;
   width: auto;
   overflow: hidden;
@@ -43,7 +43,7 @@
 
 .display-container{
   border: solid 1px white;
-  padding: 20px;
+  padding: 10px;
   margin: 5px;
   border-radius: 10px;
 }
@@ -68,6 +68,7 @@
   width: 80%; /* Could be more or less, depending on screen size */
   color: black;
   position: relative;
+  border-radius: 5px;
 }
 
 .close-button {
@@ -76,3 +77,26 @@
   right: 20px;
   cursor: pointer;
 }
+
+.single-todo{
+  background-color: #E2DBBE;
+  margin-bottom:5px ;
+  color:black;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons{
+  margin-right: 10px;
+}
+
+.icons > span {
+  margin-right: 5px;
+}
+
+.edit-icon, .delete-icon, .check-icon {
+ cursor: pointer;
+}
+

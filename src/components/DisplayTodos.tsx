@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
 import Todo from "./TodosModel/TodosModel";
 
+import SingleTodo from "./SingleTodo/SingleTodo"
+
 interface Props {
     dataFromDB : Todo[]
     setDataFromDB : React.Dispatch<React.SetStateAction<Todo[]>>
+    isModalOpen : Boolean
 }
 
-const Display : React.FC<Props> = ({dataFromDB, setDataFromDB}) => {
+const Display : React.FC<Props> = ({dataFromDB, setDataFromDB, isModalOpen}) => {
 
+    /* maling logic */
     useEffect(()=>{
-       fetchData() 
-    },[])
+       if (isModalOpen === false){
+        fetchData()
+       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isModalOpen])
 
     useEffect(()=>{
         console.log(dataFromDB)
@@ -35,9 +42,9 @@ const Display : React.FC<Props> = ({dataFromDB, setDataFromDB}) => {
     }
 
     const displayAllTodos = () => {
-        console.log("etit")
+     
         return (
-            dataFromDB.map(each => <div>{each.title}</div>)
+            dataFromDB.map((each,index) => <SingleTodo data={each} key={index}></SingleTodo>)
         )
     }
 

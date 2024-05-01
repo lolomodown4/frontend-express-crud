@@ -10,14 +10,14 @@ import Modal from './components/Modal/Modal';
 import Todo from "./components/TodosModel/TodosModel"
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [dataFromDB, setDataFromDB] = useState<Todo[]>([])
 
   return (
     <div className="App">
       <Title/>
       <Search setIsModalOpen={setIsModalOpen}/>
-      <Display dataFromDB={dataFromDB} setDataFromDB={setDataFromDB}/>
+      <Display dataFromDB={dataFromDB} setDataFromDB={setDataFromDB} isModalOpen={isModalOpen}/>
 
       {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen}/> : ""}
     </div>
