@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './App.css';
 
 import Title from "./components/Title"
@@ -13,13 +13,33 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [dataFromDB, setDataFromDB] = useState<Todo[]>([])
 
+  const [isSaveButtonClicked, setIsSaveButtonClicked] = useState<boolean>(false)
+  const [isDeleteButtonClicked, setIsDeleteButtonClicked] = useState<boolean>(false)
+
+  const [searchString, setSearchString] = useState<string>("")
+
+
   return (
     <div className="App">
       <Title/>
-      <Search setIsModalOpen={setIsModalOpen}/>
-      <Display dataFromDB={dataFromDB} setDataFromDB={setDataFromDB} isModalOpen={isModalOpen}/>
+      
+      <Search setIsModalOpen={setIsModalOpen} setSearchString={setSearchString}/>
 
-      {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen}/> : ""}
+      <Display 
+        searchString={searchString}
+        dataFromDB={dataFromDB} 
+        setDataFromDB={setDataFromDB} 
+        isDeleteButtonClicked={isDeleteButtonClicked} 
+        setIsDeleteButtonClicked={setIsDeleteButtonClicked} 
+        isSaveButtonClicked={isSaveButtonClicked} 
+        setIsSaveButtonClicked={setIsSaveButtonClicked}
+      />
+
+      {isModalOpen &&
+        <Modal 
+          setIsModalOpen={setIsModalOpen} 
+          setIsSaveButtonClicked={setIsSaveButtonClicked}/>
+      }
     </div>
   );
 }

@@ -6,9 +6,11 @@ import Todo from "../TodosModel/TodosModel";
 
 interface Props {
     setIsModalOpen : React.Dispatch<React.SetStateAction<boolean>>
+    setIsSaveButtonClicked : React.Dispatch<React.SetStateAction<boolean>>
+
 }
 
-const Modal : React.FC<Props> = ({setIsModalOpen}) => {
+const Modal : React.FC<Props> = ({setIsModalOpen, setIsSaveButtonClicked}) => {
 
     const [titleTracker, setTitleTracker] = useState<string>("")
     
@@ -24,11 +26,13 @@ const Modal : React.FC<Props> = ({setIsModalOpen}) => {
         setIsModalOpen(false)
         /* add the data to the database here */
         postData()
+
+        
     }
 
     const postData = async() => {
         const bodyData:Todo = {
-            'id': 5,
+            'id' : 1,
             'title': titleTracker,
             'description': descriptionTracker,
             'isDone' : false
@@ -49,7 +53,8 @@ const Modal : React.FC<Props> = ({setIsModalOpen}) => {
 
             await response.json()
 
-           
+          
+            setIsSaveButtonClicked(true)
         } catch (error) {
             console.log(error)
         }
@@ -72,7 +77,7 @@ const Modal : React.FC<Props> = ({setIsModalOpen}) => {
                     </div>
                 </>
 
-                <button> Save </button>
+                <button type="submit"> Save </button>
             </form>
         </div>
      );
