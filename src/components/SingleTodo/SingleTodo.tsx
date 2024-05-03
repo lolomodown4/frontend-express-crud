@@ -7,12 +7,12 @@ import Todo from "../TodosModel/TodosModel"
 interface Props {
     data : Todo,
     setDataFromDB: React.Dispatch<React.SetStateAction<Todo[]>>
-    setIsDeleteButtonClicked : React.Dispatch<React.SetStateAction<boolean>>
+  
     _id : String | undefined
 
 }
 
-const TodoCard : React.FC<Props>= ({data,setDataFromDB, setIsDeleteButtonClicked,_id}) => {
+const TodoCard : React.FC<Props>= ({data,setDataFromDB,_id}) => {
 
 
     const handleDelete = () => {
@@ -23,7 +23,7 @@ const TodoCard : React.FC<Props>= ({data,setDataFromDB, setIsDeleteButtonClicked
 
     const fetchDelete = async() => {
         try {
-            setIsDeleteButtonClicked(true)
+           
           
             const response = await fetch(`http://localhost:5000/todo/${_id}`, {method : "DELETE"})
 
@@ -35,7 +35,7 @@ const TodoCard : React.FC<Props>= ({data,setDataFromDB, setIsDeleteButtonClicked
             
             setDataFromDB(data)
             console.log(data)
-            setIsDeleteButtonClicked(false)
+         
         } catch (error) {
             console.log(error)
         }

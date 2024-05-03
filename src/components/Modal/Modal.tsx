@@ -32,7 +32,6 @@ const Modal : React.FC<Props> = ({setIsModalOpen, setIsSaveButtonClicked}) => {
 
     const postData = async() => {
         const bodyData:Todo = {
-            'id' : 1,
             'title': titleTracker,
             'description': descriptionTracker,
             'isDone' : false

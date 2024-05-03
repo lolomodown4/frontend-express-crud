@@ -8,21 +8,17 @@ interface Props {
     searchString : string
     dataFromDB : Todo[]
     setDataFromDB : React.Dispatch<React.SetStateAction<Todo[]>>
-    isDeleteButtonClicked : boolean
-    setIsDeleteButtonClicked : React.Dispatch<React.SetStateAction<boolean>>
     isSaveButtonClicked : boolean
     setIsSaveButtonClicked : React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Display : React.FC<Props> = ({searchString, dataFromDB, setDataFromDB,isDeleteButtonClicked, setIsDeleteButtonClicked, isSaveButtonClicked, setIsSaveButtonClicked}) => {
+const Display : React.FC<Props> = ({searchString, dataFromDB, setDataFromDB, isSaveButtonClicked, setIsSaveButtonClicked}) => {
 
     useEffect(()=>{
         fetchData()
     },[])
 
     useEffect(()=>{
-       
-       
        if (searchString.length > 0 ) {
             searchTask()
        } else if (isSaveButtonClicked === true ){
@@ -72,7 +68,7 @@ const Display : React.FC<Props> = ({searchString, dataFromDB, setDataFromDB,isDe
     const displayAllTodos = () => {
      
         return (
-            dataFromDB.map((each,index) => <SingleTodo data={each} key={index} _id={each._id} setDataFromDB={setDataFromDB} setIsDeleteButtonClicked={setIsDeleteButtonClicked}></SingleTodo>)
+            dataFromDB.map((each,index) => <SingleTodo data={each} key={index} _id={each._id} setDataFromDB={setDataFromDB} ></SingleTodo>)
         )
     }
 

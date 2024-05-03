@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import './App.css';
 
 import Title from "./components/Title"
@@ -14,7 +14,6 @@ function App() {
   const [dataFromDB, setDataFromDB] = useState<Todo[]>([])
 
   const [isSaveButtonClicked, setIsSaveButtonClicked] = useState<boolean>(false)
-  const [isDeleteButtonClicked, setIsDeleteButtonClicked] = useState<boolean>(false)
 
   const [searchString, setSearchString] = useState<string>("")
 
@@ -29,8 +28,6 @@ function App() {
         searchString={searchString}
         dataFromDB={dataFromDB} 
         setDataFromDB={setDataFromDB} 
-        isDeleteButtonClicked={isDeleteButtonClicked} 
-        setIsDeleteButtonClicked={setIsDeleteButtonClicked} 
         isSaveButtonClicked={isSaveButtonClicked} 
         setIsSaveButtonClicked={setIsSaveButtonClicked}
       />
